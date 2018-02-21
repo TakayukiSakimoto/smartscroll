@@ -98,14 +98,14 @@
 
         if (Math.abs(xDiff) > Math.abs(yDiff)) {
           if (xDiff > 0) {
-            options.eventEmitter.emitEvent('swipeLeft');
+            options.eventEmitter.emit('swipeLeft');
           } else {
-            options.eventEmitter.emitEvent('swipeRight');
+            options.eventEmitter.emit('swipeRight');
           }
         } else if (yDiff > 0) {
-          options.eventEmitter.emitEvent('swipeUp');
+          options.eventEmitter.emit('swipeUp');
         } else {
-          options.eventEmitter.emitEvent('swipeDown');
+          options.eventEmitter.emit('swipeDown');
         }
         /* reset values */
         xDown = null;
@@ -252,7 +252,7 @@
         if (options.eventEmitter) {
           var windowTop = getWindowTop();
           var sectionIndexAtWindowMiddle = getSectionIndexAt(windowTop + ($(window).height() / 2));
-          options.eventEmitter.emitEvent('scrollEnd', [sectionIndexAtWindowMiddle]);
+          options.eventEmitter.emit('scrollEnd', [sectionIndexAtWindowMiddle]);
         }
       });
     };
@@ -269,7 +269,7 @@
           ) : (
               sectionIndexAtWindowMiddle - 1
           );
-          options.eventEmitter.emitEvent('scrollStart', [nextSlideNumber]);
+          options.eventEmitter.emit('scrollStart', [nextSlideNumber]);
         }
         for (var i = 0; i < sections.length; i += 1) {
           if (windowTop < sections[i]) {
@@ -279,7 +279,7 @@
               scrollToPixel(sections[i - 1] - $(window).height(), 700);
             }
             if (options.eventEmitter) {
-              options.eventEmitter.emitEvent('scrollEnd', [sectionIndexAtWindowMiddle]);
+              options.eventEmitter.emit('scrollEnd', [sectionIndexAtWindowMiddle]);
             }
             return false;
           }
@@ -327,12 +327,12 @@
                   );
                 }
                 if (options.eventEmitter) {
-                  options.eventEmitter.emitEvent('scrollStart', [sectionIndexAtWindowMiddle - 1]);
+                  options.eventEmitter.emit('scrollStart', [sectionIndexAtWindowMiddle - 1]);
                 }
               } else if (scrollAction === 'down') {
                 scrollToPixel(sections[sectionIndexAtWindowMiddle] + 1, options.animationSpeed);
                 if (options.eventEmitter) {
-                  options.eventEmitter.emitEvent('scrollStart', [sectionIndexAtWindowMiddle + 1]);
+                  options.eventEmitter.emit('scrollStart', [sectionIndexAtWindowMiddle + 1]);
                 }
               }
             }
@@ -490,7 +490,7 @@
                     , options.animationSpeed);
                 }
                 if (options.eventEmitter) {
-                  options.eventEmitter.emitEvent('scrollStart', [sectionIndexAtWindowMiddle - 1]);
+                  options.eventEmitter.emit('scrollStart', [sectionIndexAtWindowMiddle - 1]);
                 }
                 break;
               // down arrow
@@ -499,7 +499,7 @@
                 e.stopPropagation();
                 scrollToPixel(sections[sectionIndexAtWindowMiddle] + 1, options.animationSpeed);
                 if (options.eventEmitter) {
-                  options.eventEmitter.emitEvent('scrollStart', [sectionIndexAtWindowMiddle + 1]);
+                  options.eventEmitter.emit('scrollStart', [sectionIndexAtWindowMiddle + 1]);
                 }
                 break;
 
