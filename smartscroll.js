@@ -155,7 +155,7 @@
     var calculateSectionBottoms = function () {
       var tmpSections = [];
       sectionWrapperTop = Math.round(
-        sectionWrapper.position().top
+        sectionWrapper.offset().top
         + parseInt(sectionWrapper.css('paddingTop'), 10)
         + parseInt(sectionWrapper.css('borderTopWidth'), 10)
         + parseInt(sectionWrapper.css('marginTop'), 10));
